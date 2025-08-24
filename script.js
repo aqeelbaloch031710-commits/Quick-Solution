@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `💰 Survey Charges: 200 PKR (adjustable in final bill)%0A` +
         `*Please confirm this booking.*`;
 
-      const whatsappNumber = "923171030402";
+      const whatsappNumber = "923122666407";
       const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
 
       window.open(whatsappLink, "_blank");
