@@ -261,3 +261,45 @@ footer {
   margin: 8px 0;
   color: #444;
 }
+/* Logo container */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Image logo auto-resize */
+.logo img {
+  max-height: 60px;   /* desktop size */
+  width: auto;
+  height: auto;
+}
+
+/* Text logo auto-resize */
+.logo-text {
+  font-weight: 700;
+  font-family: sans-serif;
+  font-size: clamp(1.2rem, 4vw, 1.8rem); /* responsive size */
+  line-height: 1;
+}
+
+.logo-text .quick {
+  color: #007bff; /* blue */
+}
+
+.logo-text .solution {
+  color: #e53935; /* red */
+}
+
+/* Extra responsive adjustments */
+@media (max-width: 768px) {
+  .logo img {
+    max-height: 45px; /* tablet */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    max-height: 35px; /* mobile */
+  }
+}
