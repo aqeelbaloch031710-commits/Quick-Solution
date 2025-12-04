@@ -21,6 +21,38 @@ header {
   padding: 2rem 1rem;
 }
 
+/* 
+    ASSUMPTION: 
+    The parent container (like the <body> or a <main> div) 
+    has been set to center its children, for example:
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; 
+      margin: 0;
+    }
+*/
+
+img {
+    /* --- 1. Responsive Behavior --- */
+    max-width: 100%; /* Ensures the image never exceeds the width of its parent */
+    height: auto;    /* Maintains the aspect ratio when scaling */
+    display: block;  /* Fixes common rendering issues with inline images */
+
+    /* --- 2. Framing (Mimicked using outline and box-shadow) --- */
+    /* Note: We can't add padding inside the <img> itself to create a frame area, 
+       so we use a combination of border/outline/box-shadow */
+    border: 10px solid white; /* Inner part of the "frame" */
+    outline: 1px solid #ccc;  /* Thin line around the frame */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Depth effect */
+    border-radius: 4px; /* Optional: slightly rounded corners */
+    
+    /* --- 3. Centering (Requires parent container styles to work perfectly) --- */
+    margin: 0 auto; /* Centers the image horizontally if the parent is a block container */
+}
+
+
 header h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
