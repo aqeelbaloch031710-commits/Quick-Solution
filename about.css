@@ -119,3 +119,80 @@ footer {
 .linkedin-btn:hover {
   background: #0d47a1; /* Darker blue */
 }
+
+/* ===== Team Member Section ===== */
+.team-member {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 0 15px;
+  text-align: center;
+}
+
+.team-member h2 {
+  font-size: 26px;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+/* ===== Card ===== */
+.member-card {
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 14px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Profile Image ===== */
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #f4c400; /* Quick Solution yellow */
+  margin-bottom: 18px;
+}
+
+/* ===== Name ===== */
+.member-card h3 {
+  font-size: 22px;
+  margin-bottom: 6px;
+  color: #111;
+}
+
+/* ===== Designation ===== */
+.designation {
+  font-size: 15px;
+  font-weight: 600;
+  color: #777;
+  margin-bottom: 14px;
+}
+
+/* ===== Description ===== */
+.description {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 480px) {
+  .team-member h2 {
+    font-size: 22px;
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .member-card h3 {
+    font-size: 20px;
+  }
+}
