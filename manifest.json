@@ -1,0 +1,15 @@
+{
+  "name": "Quick Solution Store",
+  "short_name": "QuickStore",
+  "start_url": "product.html",
+  "display": "standalone",
+  "background_color": "#1976d2",
+  "theme_color": "#1976d2",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
