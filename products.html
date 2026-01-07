@@ -3,166 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick Solution Store</title>
+
+<!-- SEO CORE -->
+<title>Quick Solution | Buy Quality Products Online in Pakistan</title>
+<meta name="description" content="Quick Solution offers quality products with fast delivery across Pakistan. Order easily via WhatsApp. Karachi, Lahore, Islamabad delivery available.">
+<meta name="keywords" content="quick solution, online store pakistan, whatsapp shopping, buy products online, fast delivery">
+<meta name="author" content="Quick Solution">
+
+<!-- Open Graph (Social Sharing) -->
+<meta property="og:title" content="Quick Solution Online Store">
+<meta property="og:description" content="Shop smart. Order via WhatsApp. Fast delivery across Pakistan.">
+<meta property="og:type" content="website">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.ico">
 
 <style>
-* { box-sizing: border-box; font-family: Arial, sans-serif; }
-body { margin:0; background:#eef4ff; }
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-/* Header */
+body {
+  margin: 0;
+  background: #f4f7fb;
+  color: #333;
+}
+
+/* HEADER */
 header {
-  background: linear-gradient(135deg,#0d47a1,#1976d2,#42a5f5);
-  color:white;
-  padding:10px 15px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  position:sticky;
-  top:0;
-  z-index:10;
+  background: linear-gradient(135deg, #0d47a1, #1976d2, #42a5f5);
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.header-left {
-  display:flex;
-  align-items:center;
-  gap:10px;
+header img {
+  height: 42px;
+  cursor: pointer;
 }
 
-.logo {
-  height:40px;
+nav a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
 }
 
-.home-btn {
-  background:white;
-  color:#1976d2;
-  border:none;
-  padding:6px 12px;
-  border-radius:20px;
-  cursor:pointer;
-  font-weight:bold;
+/* MAIN */
+main {
+  padding: 20px;
 }
 
-/* Products */
+/* PRODUCTS */
 .products {
-  display:flex;
-  gap:15px;
-  padding:15px;
-  overflow-x:auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
 }
-.product {
-  min-width:260px;
-  background:white;
-  border-radius:12px;
-  padding:15px;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
-  transition:.3s;
+
+article.product {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform .3s;
 }
-.product:hover { transform:translateY(-6px); }
+
+article.product:hover {
+  transform: translateY(-6px);
+}
+
 .product img {
-  width:100%; height:160px; object-fit:cover; border-radius:10px;
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
 }
-.product h3 { color:#0d47a1; margin:10px 0 5px; }
+
+.product h2 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+  color: #0d47a1;
+}
+
+.product p {
+  font-size: 14px;
+  color: #555;
+}
+
+.price {
+  font-weight: bold;
+  margin: 8px 0;
+}
+
 .product button {
-  width:100%; padding:10px;
-  background:linear-gradient(135deg,#1976d2,#42a5f5);
-  border:none; color:white; border-radius:8px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
 }
 
-/* Floating Cart Logo */
-.cart-float {
-  position:fixed;
-  top:80px;
-  right:20px;
-  width:55px;
-  height:55px;
-  background:white;
-  border-radius:50%;
-  box-shadow:0 6px 20px rgba(0,0,0,.3);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:100;
-  cursor:pointer;
-}
-.cart-float img { width:32px; height:32px; }
-
-.cart-count {
-  position:absolute;
-  top:-5px;
-  right:-5px;
-  background:red;
-  color:white;
-  font-size:12px;
-  width:20px;
-  height:20px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* Modal */
-.modal {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.6);
-}
-.modal-content {
-  background:white;
-  width:90%; max-width:420px;
-  margin:40px auto;
-  padding:20px;
-  border-radius:12px;
-  animation:slideUp .4s ease;
-  position:relative;
-}
-.close {
-  position:absolute;
-  top:10px; right:15px;
-  font-size:22px; cursor:pointer;
-}
-.modal-content input, select {
-  width:100%; padding:10px; margin-bottom:8px;
-}
-.invoice {
-  background:#f1f6ff;
-  padding:10px;
-  border-radius:8px;
-  font-size:14px;
-}
-.qty-btn {
-  padding:2px 8px;
-  margin:0 5px;
-  background:#1976d2;
-  color:white;
-  border:none;
-  border-radius:5px;
-}
-.buy-btn {
-  width:100%; padding:12px;
-  background:linear-gradient(135deg,#1976d2,#42a5f5);
-  border:none; color:white;
-  border-radius:8px;
-  font-size:16px;
-}
-
-/* Success */
-.success {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.7);
-  color:white;
-  font-size:24px;
-  align-items:center;
-  justify-content:center;
-  z-index:200;
-}
-
-@keyframes slideUp {
-  from { transform:translateY(40px); opacity:0 }
-  to { transform:translateY(0); opacity:1 }
+/* FOOTER */
+footer {
+  background: #0d47a1;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+  font-size: 14px;
 }
 </style>
 </head>
@@ -170,149 +126,65 @@ header {
 <body>
 
 <header>
-  <div class="header-left">
-    <img src="cartlogo.png" class="cartlogo" alt="cartlogo">
-  </div>
-  <p>PROUDLY MADE IN PAKISTAN</p>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="products.html">Our Products</a>
-      <a href="services.html">Services</a>
-      <a href="book.html">Book Now</a>
-      <a href="about-us.html">About Us</a>
-      <a href="contact.html">Contact Us</a>
-    </nav>
+  <img src="logo.png" alt="Quick Solution Logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <nav>
+    <a href="#products">Products</a>
+    <a href="https://wa.me/923182086906" target="_blank">Contact</a>
+  </nav>
 </header>
 
-<!-- Floating Cart -->
-<div class="cart-float" onclick="openCart()">
-  <img src="cartlogo.jpeg" alt="Cart">
-  <div class="cart-count" id="cartCount">0</div>
-</div>
+<main>
 
-<div class="products">
-  <div class="product">
-    <img src="https://via.placeholder.com/300">
-    <h3>Product A</h3>
-    <p>High quality product</p>
-    <strong>Rs.1500</strong>
-    <button onclick="addToCart('Product A',1500)">Buy Now</button>
+<section id="products">
+  <h1>Quick Solution Products</h1>
+  <p>Order premium products easily via WhatsApp. Fast delivery across Pakistan.</p>
+
+  <div class="products">
+
+    <article class="product">
+      <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" alt="Smart Phone">
+      <h2>Smart Phone</h2>
+      <p>Latest smartphone with high performance.</p>
+      <div class="price">Rs. 1500</div>
+      <button onclick="buy('Smart Phone',1500)">Buy Now</button>
+    </article>
+
+    <article class="product">
+      <img src="https://images.unsplash.com/photo-1585386959984-a4155228c3c1" alt="Wireless Headphones">
+      <h2>Wireless Headphones</h2>
+      <p>Noise cancelling, long battery life.</p>
+      <div class="price">Rs. 2200</div>
+      <button onclick="buy('Wireless Headphones',2200)">Buy Now</button>
+    </article>
+
+    <article class="product">
+      <img src="https://images.unsplash.com/photo-1583225259826-d9d2a5a1a4c4" alt="Smart Watch">
+      <h2>Smart Watch</h2>
+      <p>Track health and fitness easily.</p>
+      <div class="price">Rs. 1800</div>
+      <button onclick="buy('Smart Watch',1800)">Buy Now</button>
+    </article>
+
   </div>
+</section>
 
-  <div class="product">
-    <img src="https://via.placeholder.com/300">
-    <h3>Product B</h3>
-    <p>Premium product</p>
-    <strong>Rs.2200</strong>
-    <button onclick="addToCart('Product B',2200)">Buy Now</button>
-  </div>
-</div>
+</main>
 
-<!-- Modal -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">❌</span>
-    <h3>Customer Details</h3>
-
-    <input id="name" placeholder="Name">
-    <input id="phone" placeholder="Phone">
-    <input id="address" placeholder="Address">
-
-    <select id="city" onchange="updateInvoice()">
-      <option value="">Select City</option>
-      <option>Karachi</option>
-      <option>Hyderabad</option>
-      <option>Lahore</option>
-      <option>Islamabad</option>
-      <option>Quetta</option>
-    </select>
-
-    <div class="invoice" id="invoice"></div>
-    <button class="buy-btn" onclick="finalBuy()">Buy via WhatsApp</button>
-  </div>
-</div>
-
-<div class="success" id="success">🎉 Order Placed Successfully!</div>
+<footer>
+  © 2026 Quick Solution — Online Shopping Made Easy
+</footer>
 
 <script>
-let cart = [];
+function buy(name, price) {
+  const message =
+    `Product: ${name}%0A` +
+    `Price: Rs.${price}%0A%0A` +
+    `I want to order this product.`;
 
-function addToCart(name, price) {
-  let item = cart.find(p => p.name === name);
-  if (item) item.qty++;
-  else cart.push({ name, price, qty:1 });
-
-  document.getElementById("modal").style.display="block";
-  updateInvoice();
-  updateCartCount();
-}
-
-function openCart(){
-  if(cart.length){
-    document.getElementById("modal").style.display="block";
-    updateInvoice();
-  }
-}
-
-function updateCartCount() {
-  document.getElementById("cartCount").innerText =
-    cart.reduce((a,b)=>a+b.qty,0);
-}
-
-function closeModal() {
-  document.getElementById("modal").style.display="none";
-}
-
-function deliveryCharge(city) {
-  return (city==="Karachi"||city==="Hyderabad") ? 200 : city ? 320 : 0;
-}
-
-function updateInvoice() {
-  let city = document.getElementById("city").value;
-  let del = deliveryCharge(city);
-  let html="", total=0;
-
-  cart.forEach((p,i)=>{
-    let subtotal = p.price*p.qty;
-    total += subtotal;
-    html += `${p.name}
-      <button class="qty-btn" onclick="changeQty(${i},-1)">➖</button>
-      ${p.qty}
-      <button class="qty-btn" onclick="changeQty(${i},1)">➕</button>
-      = Rs.${subtotal}<br>`;
-  });
-
-  html += `<hr>Delivery: Rs.${del}<br><strong>Total: Rs.${total+del}</strong>`;
-  document.getElementById("invoice").innerHTML = html;
-}
-
-function changeQty(i,val){
-  cart[i].qty += val;
-  if(cart[i].qty<=0) cart.splice(i,1);
-  updateInvoice();
-  updateCartCount();
-}
-
-function finalBuy(){
-  let n=name.value,p=phone.value,a=address.value,c=city.value;
-  if(!n||!p||!a||!c) return alert("Fill all fields");
-
-  document.getElementById("success").style.display="flex";
-
-  let msg=`Name:${n}%0APhone:${p}%0AAddress:${a}%0ACity:${c}%0A%0AProducts:%0A`;
-  let total=0, del=deliveryCharge(c);
-
-  cart.forEach(i=>{
-    msg+=`${i.name} x${i.qty} = Rs.${i.price*i.qty}%0A`;
-    total+=i.price*i.qty;
-  });
-
-  msg+=`Delivery: Rs.${del}%0ATotal: Rs.${total+del}`;
-
-  setTimeout(()=>{
-    window.open(`https://wa.me/923182086906?text=${msg}`,"_blank");
-    document.getElementById("success").style.display="none";
-  },1200);
+  window.open(
+    `https://wa.me/923182086906?text=${message}`,
+    "_blank"
+  );
 }
 </script>
 
