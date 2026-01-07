@@ -3,19 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- SEO -->
-<title>Quick Solution Store – Online Shopping</title>
-<meta name="description" content="Buy quality products online with WhatsApp checkout. Fast delivery across Pakistan.">
-<meta name="keywords" content="online store, whatsapp shopping, quick solution, pakistan store">
-<meta name="author" content="Quick Solution">
-
-<!-- Favicon -->
-<link rel="icon" href="favicon.ico">
-
-<!-- PWA -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1976d2">
+<title>Quick Solution Store</title>
 
 <style>
 * { box-sizing: border-box; font-family: Arial, sans-serif; }
@@ -31,25 +19,27 @@ header {
   justify-content:space-between;
   position:sticky;
   top:0;
-  z-index:100;
+  z-index:10;
+}
+
+.header-left {
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
 .logo {
   height:40px;
+}
+
+.home-btn {
+  background:white;
+  color:#1976d2;
+  border:none;
+  padding:6px 12px;
+  border-radius:20px;
   cursor:pointer;
-}
-
-/* Navbar */
-nav {
-  display:flex;
-  gap:15px;
-}
-
-nav a {
-  color:white;
-  text-decoration:none;
   font-weight:bold;
-  font-size:14px;
 }
 
 /* Products */
@@ -59,37 +49,29 @@ nav a {
   padding:15px;
   overflow-x:auto;
 }
-
 .product {
   min-width:260px;
   background:white;
   border-radius:12px;
   padding:15px;
   box-shadow:0 10px 25px rgba(0,0,0,.15);
+  transition:.3s;
 }
-
+.product:hover { transform:translateY(-6px); }
 .product img {
-  width:100%;
-  height:160px;
-  object-fit:cover;
-  border-radius:10px;
+  width:100%; height:160px; object-fit:cover; border-radius:10px;
 }
-
 .product h3 { color:#0d47a1; margin:10px 0 5px; }
-
 .product button {
-  width:100%;
-  padding:10px;
+  width:100%; padding:10px;
   background:linear-gradient(135deg,#1976d2,#42a5f5);
-  border:none;
-  color:white;
-  border-radius:8px;
+  border:none; color:white; border-radius:8px;
 }
 
-/* Floating Cart */
+/* Floating Cart Logo */
 .cart-float {
   position:fixed;
-  top:90px;
+  top:80px;
   right:20px;
   width:55px;
   height:55px;
@@ -99,11 +81,10 @@ nav a {
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:200;
+  z-index:100;
   cursor:pointer;
 }
-
-.cart-float img { width:32px; }
+.cart-float img { width:32px; height:32px; }
 
 .cart-count {
   position:absolute;
@@ -111,10 +92,10 @@ nav a {
   right:-5px;
   background:red;
   color:white;
+  font-size:12px;
   width:20px;
   height:20px;
   border-radius:50%;
-  font-size:12px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -126,41 +107,30 @@ nav a {
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.6);
-  z-index:300;
 }
-
 .modal-content {
   background:white;
-  width:90%;
-  max-width:420px;
+  width:90%; max-width:420px;
   margin:40px auto;
   padding:20px;
   border-radius:12px;
   animation:slideUp .4s ease;
   position:relative;
 }
-
 .close {
   position:absolute;
-  top:10px;
-  right:15px;
-  font-size:22px;
-  cursor:pointer;
+  top:10px; right:15px;
+  font-size:22px; cursor:pointer;
 }
-
 .modal-content input, select {
-  width:100%;
-  padding:10px;
-  margin-bottom:8px;
+  width:100%; padding:10px; margin-bottom:8px;
 }
-
 .invoice {
   background:#f1f6ff;
   padding:10px;
   border-radius:8px;
   font-size:14px;
 }
-
 .qty-btn {
   padding:2px 8px;
   margin:0 5px;
@@ -169,13 +139,10 @@ nav a {
   border:none;
   border-radius:5px;
 }
-
 .buy-btn {
-  width:100%;
-  padding:12px;
+  width:100%; padding:12px;
   background:linear-gradient(135deg,#1976d2,#42a5f5);
-  border:none;
-  color:white;
+  border:none; color:white;
   border-radius:8px;
   font-size:16px;
 }
@@ -188,94 +155,53 @@ nav a {
   background:rgba(0,0,0,.7);
   color:white;
   font-size:24px;
-  display:flex;
   align-items:center;
   justify-content:center;
-  z-index:400;
+  z-index:200;
 }
 
 @keyframes slideUp {
-  from { transform:translateY(40px); opacity:0; }
-  to { transform:translateY(0); opacity:1; }
+  from { transform:translateY(40px); opacity:0 }
+  to { transform:translateY(0); opacity:1 }
 }
 </style>
 </head>
 
-<body id="home">
+<body>
 
 <header>
-  <img src="logo.png" class="logo" onclick="goHome()" alt="Quick Solution Logo">
-  <nav>
-    <a href="#electronics">Electronics</a>
-    <a href="#fashion">Fashion</a>
-    <a href="#accessories">Accessories</a>
-  </nav>
+  <div class="header-left">
+    <img src="logo.png" class="logo" alt="Logo">
+  </div>
+  <button class="home-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    ⬅ Home
+  </button>
 </header>
 
 <!-- Floating Cart -->
 <div class="cart-float" onclick="openCart()">
-  <img src="cartlogo.jpeg">
+  <img src="cartlogo.jpeg" alt="Cart">
   <div class="cart-count" id="cartCount">0</div>
 </div>
 
-<!-- Products -->
-<section id="electronics" class="products">
+<div class="products">
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-    <h3>Smart Phone</h3>
-    <p>Latest Android smartphone</p>
-    <strong>Rs. 1500</strong>
-    <button onclick="addToCart('Smart Phone',1500)">Buy Now</button>
+    <img src="https://via.placeholder.com/300">
+    <h3>Product A</h3>
+    <p>High quality product</p>
+    <strong>Rs.1500</strong>
+    <button onclick="addToCart('Product A',1500)">Buy Now</button>
   </div>
 
   <div class="product">
-    <img src="https://images.unsplash.com/photo-1585386959984-a4155228c3c1">
-    <h3>Wireless Headphones</h3>
-    <p>Noise cancelling headphones</p>
-    <strong>Rs. 2200</strong>
-    <button onclick="addToCart('Wireless Headphones',2200)">Buy Now</button>
+    <img src="https://via.placeholder.com/300">
+    <h3>Product B</h3>
+    <p>Premium product</p>
+    <strong>Rs.2200</strong>
+    <button onclick="addToCart('Product B',2200)">Buy Now</button>
   </div>
-</section>
+</div>
 
-  <!-- Products -->
-<section id="electronics" class="products">
-  <div class="product">
-    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-    <h3>Smart Phone</h3>
-    <p>Latest Android smartphone</p>
-    <strong>Rs. 1500</strong>
-    <button onclick="addToCart('Smart Phone',1500)">Buy Now</button>
-  </div>
-
-  <div class="product">
-    <img src="https://images.unsplash.com/photo-1585386959984-a4155228c3c1">
-    <h3>Wireless Headphones</h3>
-    <p>Noise cancelling headphones</p>
-    <strong>Rs. 2200</strong>
-    <button onclick="addToCart('Wireless Headphones',2200)">Buy Now</button>
-  </div>
-</section>
-
-  <!-- Products -->
-<section id="electronics" class="products">
-  <div class="product">
-    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-    <h3>Smart Phone</h3>
-    <p>Latest Android smartphone</p>
-    <strong>Rs. 1500</strong>
-    <button onclick="addToCart('Smart Phone',1500)">Buy Now</button>
-  </div>
-
-  <div class="product">
-    <img src="https://images.unsplash.com/photo-1585386959984-a4155228c3c1">
-    <h3>Wireless Headphones</h3>
-    <p>Noise cancelling headphones</p>
-    <strong>Rs. 2200</strong>
-    <button onclick="addToCart('Wireless Headphones',2200)">Buy Now</button>
-  </div>
-</section>
-
-  
 <!-- Modal -->
 <div class="modal" id="modal">
   <div class="modal-content">
@@ -303,78 +229,83 @@ nav a {
 <div class="success" id="success">🎉 Order Placed Successfully!</div>
 
 <script>
-let cart=[];
+let cart = [];
 
-function goHome(){
-  window.scrollTo({top:0,behavior:"smooth"});
-}
+function addToCart(name, price) {
+  let item = cart.find(p => p.name === name);
+  if (item) item.qty++;
+  else cart.push({ name, price, qty:1 });
 
-function addToCart(name,price){
-  let p=cart.find(i=>i.name===name);
-  p ? p.qty++ : cart.push({name,price,qty:1});
-  openCart();
+  document.getElementById("modal").style.display="block";
+  updateInvoice();
   updateCartCount();
 }
 
 function openCart(){
-  document.getElementById("modal").style.display="block";
-  updateInvoice();
+  if(cart.length){
+    document.getElementById("modal").style.display="block";
+    updateInvoice();
+  }
 }
 
-function closeModal(){
+function updateCartCount() {
+  document.getElementById("cartCount").innerText =
+    cart.reduce((a,b)=>a+b.qty,0);
+}
+
+function closeModal() {
   document.getElementById("modal").style.display="none";
 }
 
-function updateCartCount(){
-  cartCount.innerText=cart.reduce((a,b)=>a+b.qty,0);
+function deliveryCharge(city) {
+  return (city==="Karachi"||city==="Hyderabad") ? 200 : city ? 320 : 0;
 }
 
-function delivery(city){
-  return (city==="Karachi"||city==="Hyderabad")?200:city?320:0;
-}
-
-function updateInvoice(){
-  let city=document.getElementById("city").value;
-  let del=delivery(city);
-  let total=0,html="";
+function updateInvoice() {
+  let city = document.getElementById("city").value;
+  let del = deliveryCharge(city);
+  let html="", total=0;
 
   cart.forEach((p,i)=>{
-    let sub=p.price*p.qty;
-    total+=sub;
-    html+=`${p.name}
-    <button class="qty-btn" onclick="changeQty(${i},-1)">➖</button>
-    ${p.qty}
-    <button class="qty-btn" onclick="changeQty(${i},1)">➕</button>
-    = Rs.${sub}<br>`;
+    let subtotal = p.price*p.qty;
+    total += subtotal;
+    html += `${p.name}
+      <button class="qty-btn" onclick="changeQty(${i},-1)">➖</button>
+      ${p.qty}
+      <button class="qty-btn" onclick="changeQty(${i},1)">➕</button>
+      = Rs.${subtotal}<br>`;
   });
 
-  html+=`<hr>Delivery: Rs.${del}<br><strong>Total: Rs.${total+del}</strong>`;
-  invoice.innerHTML=html;
+  html += `<hr>Delivery: Rs.${del}<br><strong>Total: Rs.${total+del}</strong>`;
+  document.getElementById("invoice").innerHTML = html;
 }
 
-function changeQty(i,v){
-  cart[i].qty+=v;
+function changeQty(i,val){
+  cart[i].qty += val;
   if(cart[i].qty<=0) cart.splice(i,1);
-  updateInvoice(); updateCartCount();
+  updateInvoice();
+  updateCartCount();
 }
 
 function finalBuy(){
-  if(!name.value||!phone.value||!address.value||!city.value) return alert("Fill all fields");
-  success.style.display="flex";
+  let n=name.value,p=phone.value,a=address.value,c=city.value;
+  if(!n||!p||!a||!c) return alert("Fill all fields");
 
-  let msg=`Name:${name.value}%0APhone:${phone.value}%0AAddress:${address.value}%0ACity:${city.value}%0A%0AProducts:%0A`;
-  let total=0,del=delivery(city.value);
+  document.getElementById("success").style.display="flex";
 
-  cart.forEach(p=>{
-    msg+=`${p.name} x${p.qty} = Rs.${p.price*p.qty}%0A`;
-    total+=p.price*p.qty;
+  let msg=`Name:${n}%0APhone:${p}%0AAddress:${a}%0ACity:${c}%0A%0AProducts:%0A`;
+  let total=0, del=deliveryCharge(c);
+
+  cart.forEach(i=>{
+    msg+=`${i.name} x${i.qty} = Rs.${i.price*i.qty}%0A`;
+    total+=i.price*i.qty;
   });
 
   msg+=`Delivery: Rs.${del}%0ATotal: Rs.${total+del}`;
 
   setTimeout(()=>{
     window.open(`https://wa.me/923182086906?text=${msg}`,"_blank");
-    success.style.display="none";
+    document.getElementById("success").style.display="none";
   },1200);
 }
 </script>
