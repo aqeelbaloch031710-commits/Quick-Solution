@@ -2,222 +2,380 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Product Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO -->
+<title>Quick Solution Store – Online Shopping</title>
+<meta name="description" content="Buy quality products online with WhatsApp checkout. Fast delivery across Pakistan.">
+<meta name="keywords" content="online store, whatsapp shopping, quick solution, pakistan store">
+<meta name="author" content="Quick Solution">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.ico">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1976d2">
+
 <style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  margin: 0;
-}
+* { box-sizing: border-box; font-family: Arial, sans-serif; }
+body { margin:0; background:#eef4ff; }
+
+/* Header */
 header {
-  background: #111;
-  color: #fff;
-  padding: 15px;
-  text-align: center;
+  background: linear-gradient(135deg,#0d47a1,#1976d2,#42a5f5);
+  color:white;
+  padding:10px 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
+
+.logo {
+  height:40px;
+  cursor:pointer;
+}
+
+/* Navbar */
+nav {
+  display:flex;
+  gap:15px;
+}
+
+nav a {
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:14px;
+}
+
+/* Products */
 .products {
-  display: flex;
-  overflow-x: auto;
-  padding: 20px;
-  gap: 20px;
+  display:flex;
+  gap:15px;
+  padding:15px;
+  overflow-x:auto;
 }
+
 .product {
-  background: #fff;
-  min-width: 250px;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  min-width:260px;
+  background:white;
+  border-radius:12px;
+  padding:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
+
 .product img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:10px;
 }
-.product h3 {
-  margin: 10px 0 5px;
-}
-.product p {
-  font-size: 14px;
-}
+
+.product h3 { color:#0d47a1; margin:10px 0 5px; }
+
 .product button {
-  background: #25D366;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
+  width:100%;
+  padding:10px;
+  background:linear-gradient(135deg,#1976d2,#42a5f5);
+  border:none;
+  color:white;
+  border-radius:8px;
+}
+
+/* Floating Cart */
+.cart-float {
+  position:fixed;
+  top:90px;
+  right:20px;
+  width:55px;
+  height:55px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 6px 20px rgba(0,0,0,.3);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:200;
+  cursor:pointer;
+}
+
+.cart-float img { width:32px; }
+
+.cart-count {
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  background:red;
+  color:white;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 /* Modal */
 .modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:300;
 }
+
 .modal-content {
-  background: white;
-  width: 90%;
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border-radius: 8px;
+  background:white;
+  width:90%;
+  max-width:420px;
+  margin:40px auto;
+  padding:20px;
+  border-radius:12px;
+  animation:slideUp .4s ease;
+  position:relative;
 }
+
+.close {
+  position:absolute;
+  top:10px;
+  right:15px;
+  font-size:22px;
+  cursor:pointer;
+}
+
 .modal-content input, select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
+  width:100%;
+  padding:10px;
+  margin-bottom:8px;
 }
-.modal-content button {
-  width: 100%;
-  padding: 12px;
-  background: #25D366;
-  color: white;
-  border: none;
-  font-size: 16px;
-}
+
 .invoice {
-  font-size: 14px;
-  margin-bottom: 10px;
+  background:#f1f6ff;
+  padding:10px;
+  border-radius:8px;
+  font-size:14px;
+}
+
+.qty-btn {
+  padding:2px 8px;
+  margin:0 5px;
+  background:#1976d2;
+  color:white;
+  border:none;
+  border-radius:5px;
+}
+
+.buy-btn {
+  width:100%;
+  padding:12px;
+  background:linear-gradient(135deg,#1976d2,#42a5f5);
+  border:none;
+  color:white;
+  border-radius:8px;
+  font-size:16px;
+}
+
+/* Success */
+.success {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  color:white;
+  font-size:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:400;
+}
+
+@keyframes slideUp {
+  from { transform:translateY(40px); opacity:0; }
+  to { transform:translateY(0); opacity:1; }
 }
 </style>
 </head>
 
-<body>
+<body id="home">
 
 <header>
-  <h1>Our Products</h1>
+  <img src="logo.png" class="logo" onclick="goHome()" alt="Quick Solution Logo">
+  <nav>
+    <a href="#electronics">Electronics</a>
+    <a href="#fashion">Fashion</a>
+    <a href="#accessories">Accessories</a>
+  </nav>
 </header>
 
-<div class="products">
-  <div class="product">
-    <img src="https://via.placeholder.com/250">
-    <h3>Product A</h3>
-    <p>High quality product A</p>
-    <strong>Rs. 1500</strong>
-    <button onclick="addToCart('Product A',1500)">Buy Now</button>
-  </div>
-
-  <div class="product">
-    <img src="https://via.placeholder.com/250">
-    <h3>Product B</h3>
-    <p>Premium product B</p>
-    <strong>Rs. 2200</strong>
-    <button onclick="addToCart('Product B',2200)">Buy Now</button>
-  </div>
-
-  <div class="product">
-    <img src="https://via.placeholder.com/250">
-    <h3>Product C</h3>
-    <p>Best selling product C</p>
-    <strong>Rs. 1800</strong>
-    <button onclick="addToCart('Product C',1800)">Buy Now</button>
-  </div>
+<!-- Floating Cart -->
+<div class="cart-float" onclick="openCart()">
+  <img src="cartlogo.jpeg">
+  <div class="cart-count" id="cartCount">0</div>
 </div>
 
-<div class="products">
+<!-- Products -->
+<section id="electronics" class="products">
   <div class="product">
-    <img src="https://via.placeholder.com/250">
-    <h3>Product A</h3>
-    <p>High quality product A</p>
+    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+    <h3>Smart Phone</h3>
+    <p>Latest Android smartphone</p>
     <strong>Rs. 1500</strong>
-    <button onclick="addToCart('Product A',1500)">Buy Now</button>
+    <button onclick="addToCart('Smart Phone',1500)">Buy Now</button>
   </div>
 
   <div class="product">
-    <img src="https://via.placeholder.com/250">
-    <h3>Product B</h3>
-    <p>Premium product B</p>
+    <img src="https://images.unsplash.com/photo-1585386959984-a4155228c3c1">
+    <h3>Wireless Headphones</h3>
+    <p>Noise cancelling headphones</p>
     <strong>Rs. 2200</strong>
-    <button onclick="addToCart('Product B',2200)">Buy Now</button>
+    <button onclick="addToCart('Wireless Headphones',2200)">Buy Now</button>
+  </div>
+</section>
+
+  <!-- Products -->
+<section id="electronics" class="products">
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+    <h3>Smart Phone</h3>
+    <p>Latest Android smartphone</p>
+    <strong>Rs. 1500</strong>
+    <button onclick="addToCart('Smart Phone',1500)">Buy Now</button>
   </div>
 
   <div class="product">
-    <img src="https://via.placeholder.com/250">
-    <h3>Product C</h3>
-    <p>Best selling product C</p>
-    <strong>Rs. 1800</strong>
-    <button onclick="addToCart('Product C',1800)">Buy Now</button>
+    <img src="https://images.unsplash.com/photo-1585386959984-a4155228c3c1">
+    <h3>Wireless Headphones</h3>
+    <p>Noise cancelling headphones</p>
+    <strong>Rs. 2200</strong>
+    <button onclick="addToCart('Wireless Headphones',2200)">Buy Now</button>
   </div>
-</div>
+</section>
 
+  <!-- Products -->
+<section id="electronics" class="products">
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+    <h3>Smart Phone</h3>
+    <p>Latest Android smartphone</p>
+    <strong>Rs. 1500</strong>
+    <button onclick="addToCart('Smart Phone',1500)">Buy Now</button>
+  </div>
+
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1585386959984-a4155228c3c1">
+    <h3>Wireless Headphones</h3>
+    <p>Noise cancelling headphones</p>
+    <strong>Rs. 2200</strong>
+    <button onclick="addToCart('Wireless Headphones',2200)">Buy Now</button>
+  </div>
+</section>
+
+  
 <!-- Modal -->
 <div class="modal" id="modal">
   <div class="modal-content">
+    <span class="close" onclick="closeModal()">❌</span>
     <h3>Customer Details</h3>
 
-    <input type="text" id="name" placeholder="Your Name">
-    <input type="text" id="phone" placeholder="Phone Number">
-    <input type="text" id="address" placeholder="Address">
+    <input id="name" placeholder="Name">
+    <input id="phone" placeholder="Phone">
+    <input id="address" placeholder="Address">
 
-    <select id="city">
+    <select id="city" onchange="updateInvoice()">
       <option value="">Select City</option>
-      <option value="Karachi">Karachi</option>
-      <option value="Hyderabad">Hyderabad</option>
-      <option value="Islamabad">Islamabad</option>
-      <option value="Lahore">Lahore</option>
-      <option value="Gwadar">Gwadar</option>
-      <option value="Pasni">Pasni</option>
-      <option value="Quetta">Quetta</option>
+      <option>Karachi</option>
+      <option>Hyderabad</option>
+      <option>Lahore</option>
+      <option>Islamabad</option>
+      <option>Quetta</option>
     </select>
 
     <div class="invoice" id="invoice"></div>
-
-    <button onclick="finalBuy()">Buy via WhatsApp</button>
+    <button class="buy-btn" onclick="finalBuy()">Buy via WhatsApp</button>
   </div>
 </div>
 
-<script>
-let cart = [];
+<div class="success" id="success">🎉 Order Placed Successfully!</div>
 
-function addToCart(name, price) {
-  cart.push({ name, price });
-  document.getElementById("modal").style.display = "block";
+<script>
+let cart=[];
+
+function goHome(){
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function addToCart(name,price){
+  let p=cart.find(i=>i.name===name);
+  p ? p.qty++ : cart.push({name,price,qty:1});
+  openCart();
+  updateCartCount();
+}
+
+function openCart(){
+  document.getElementById("modal").style.display="block";
   updateInvoice();
 }
 
-function updateInvoice() {
-  let invoice = "";
-  let total = 0;
-
-  cart.forEach((item, index) => {
-    invoice += `${index+1}. ${item.name} - Rs.${item.price}<br>`;
-    total += item.price;
-  });
-
-  invoice += `<strong>Total: Rs.${total}</strong>`;
-  document.getElementById("invoice").innerHTML = invoice;
+function closeModal(){
+  document.getElementById("modal").style.display="none";
 }
 
-function finalBuy() {
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let address = document.getElementById("address").value;
-  let city = document.getElementById("city").value;
+function updateCartCount(){
+  cartCount.innerText=cart.reduce((a,b)=>a+b.qty,0);
+}
 
-  if(!name || !phone || !address || !city) {
-    alert("Please fill all fields");
-    return;
-  }
+function delivery(city){
+  return (city==="Karachi"||city==="Hyderabad")?200:city?320:0;
+}
 
-  let delivery = (city === "Karachi" || city === "Hyderabad") ? 200 : 320;
+function updateInvoice(){
+  let city=document.getElementById("city").value;
+  let del=delivery(city);
+  let total=0,html="";
 
-  let message = `Customer Name: ${name}%0APhone: ${phone}%0AAddress: ${address}%0ACity: ${city}%0A%0AProducts:%0A`;
-
-  let total = 0;
-  cart.forEach(item => {
-    message += `- ${item.name} (Rs.${item.price})%0A`;
-    total += item.price;
+  cart.forEach((p,i)=>{
+    let sub=p.price*p.qty;
+    total+=sub;
+    html+=`${p.name}
+    <button class="qty-btn" onclick="changeQty(${i},-1)">➖</button>
+    ${p.qty}
+    <button class="qty-btn" onclick="changeQty(${i},1)">➕</button>
+    = Rs.${sub}<br>`;
   });
 
-  total += delivery;
+  html+=`<hr>Delivery: Rs.${del}<br><strong>Total: Rs.${total+del}</strong>`;
+  invoice.innerHTML=html;
+}
 
-  message += `%0ADelivery Charges: Rs.${delivery}%0ATotal Bill: Rs.${total}`;
+function changeQty(i,v){
+  cart[i].qty+=v;
+  if(cart[i].qty<=0) cart.splice(i,1);
+  updateInvoice(); updateCartCount();
+}
 
-  let whatsappURL = `https://wa.me/923182086906?text=${message}`;
-  window.open(whatsappURL, "_blank");
+function finalBuy(){
+  if(!name.value||!phone.value||!address.value||!city.value) return alert("Fill all fields");
+  success.style.display="flex";
+
+  let msg=`Name:${name.value}%0APhone:${phone.value}%0AAddress:${address.value}%0ACity:${city.value}%0A%0AProducts:%0A`;
+  let total=0,del=delivery(city.value);
+
+  cart.forEach(p=>{
+    msg+=`${p.name} x${p.qty} = Rs.${p.price*p.qty}%0A`;
+    total+=p.price*p.qty;
+  });
+
+  msg+=`Delivery: Rs.${del}%0ATotal: Rs.${total+del}`;
+
+  setTimeout(()=>{
+    window.open(`https://wa.me/923182086906?text=${msg}`,"_blank");
+    success.style.display="none";
+  },1200);
 }
 </script>
 
