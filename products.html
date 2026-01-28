@@ -4,28 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO CORE -->
-<title>Quick Solution | Buy Quality Products Online in Pakistan</title>
-<meta name="description" content="Quick Solution offers quality products with fast delivery across Pakistan. Order easily via WhatsApp. Karachi, Lahore, Islamabad delivery available.">
-<meta name="keywords" content="quick solution, online store pakistan, whatsapp shopping, buy products online, fast delivery">
-<meta name="author" content="Quick Solution">
-
-<!-- Open Graph (Social Sharing) -->
-<meta property="og:title" content="Quick Solution Online Store">
-<meta property="og:description" content="Shop smart. Order via WhatsApp. Fast delivery across Pakistan.">
-<meta property="og:type" content="website">
-
-<!-- Favicon -->
-<link rel="icon" href="favicon.ico">
-
+<title>Quick Solution | Products</title>
 <style>
-* {
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
 body {
   margin: 0;
+  font-family: Arial, sans-serif;
   background: #f4f7fb;
   color: #333;
 }
@@ -41,8 +24,8 @@ header {
 }
 
 header img {
-  height: 42px;
-  cursor: pointer;
+  max-width: 120px;
+  height: auto;
 }
 
 nav a {
@@ -50,43 +33,50 @@ nav a {
   margin-left: 15px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 14px;
 }
 
-/* MAIN */
-main {
-  padding: 20px;
-}
-
-/* PRODUCTS */
+/* PRODUCT GRID */
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 30px;
 }
 
-article.product {
+.product {
   background: white;
   border-radius: 12px;
   padding: 15px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  transition: transform .3s;
+  transition: transform .3s ease;
 }
 
-article.product:hover {
+.product:hover {
   transform: translateY(-6px);
 }
 
 .product img {
   width: 100%;
-  height: 170px;
-  object-fit: cover;
   border-radius: 10px;
+  transition: transform .4s ease;
+  cursor: zoom-in;
+}
+
+/* Zoom effect on hover (desktop) */
+.product img:hover {
+  transform: scale(1.15);
+}
+
+/* Touch zoom for mobile */
+@media (hover: none) {
+  .product img:active {
+    transform: scale(1.2);
+  }
 }
 
 .product h2 {
   font-size: 18px;
-  margin: 10px 0 5px;
+  margin: 12px 0 6px;
   color: #0d47a1;
 }
 
@@ -110,24 +100,12 @@ article.product:hover {
   font-size: 15px;
   cursor: pointer;
 }
-
-/* FOOTER */
-footer {
-  background: #0d47a1;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  margin-top: 30px;
-  font-size: 14px;
-}
 </style>
 </head>
-
 <body>
 
 <header>
-<img src="Solution-removebg-preview.png" alt="Quick Solution" style="max-width:10%; height:auto;">
-
+  <img src="Solution-removebg-preview.png" alt="Quick Solution Logo">
   <nav>
     <a href="#products">Products</a>
     <a href="https://wa.me/923182086906" target="_blank">Contact</a>
@@ -135,15 +113,14 @@ footer {
 </header>
 
 <main>
-
 <section id="products">
-  <h1>Quick Solution Products</h1>
-  <p>Order premium products easily via WhatsApp. Fast delivery across Pakistan.</p>
+  <h1 style="text-align:center; color:#0d47a1;">Quick Solution Products</h1>
+  <p style="text-align:center;">Order premium products easily via WhatsApp. Fast delivery across Pakistan.</p>
 
   <div class="products">
 
     <article class="product">
-<img src="https://raw.githubusercontent.com/aqeelbaloch031710/Quick-Solution/main/cartlogo.jpeg" alt="Smart Watch">
+      <img src="cartlogo.jpeg" alt="Smart Phone">
       <h2>Smart Phone</h2>
       <p>Latest smartphone with high performance.</p>
       <div class="price">Rs. 1500</div>
@@ -151,7 +128,7 @@ footer {
     </article>
 
     <article class="product">
-<img src="https://raw.githubusercontent.com/aqeelbaloch031710/Quick-Solution/main/cartlogo.jpeg" alt="Smart Watch">
+      <img src="cartlogo.jpeg" alt="Wireless Headphones">
       <h2>Wireless Headphones</h2>
       <p>Noise cancelling, long battery life.</p>
       <div class="price">Rs. 2200</div>
@@ -159,7 +136,7 @@ footer {
     </article>
 
     <article class="product">
-<img src="https://raw.githubusercontent.com/aqeelbaloch031710/Quick-Solution/main/cartlogo.jpeg" alt="Smart Watch">
+      <img src="cartlogo.jpeg" alt="Smart Watch">
       <h2>Smart Watch</h2>
       <p>Track health and fitness easily.</p>
       <div class="price">Rs. 1800</div>
@@ -168,10 +145,9 @@ footer {
 
   </div>
 </section>
-
 </main>
 
-<footer>
+<footer style="background:#0d47a1; color:white; text-align:center; padding:15px;">
   © 2026 Quick Solution — Online Shopping Made Easy
 </footer>
 
