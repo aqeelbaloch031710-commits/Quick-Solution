@@ -219,5 +219,118 @@
 <a href="https://wa.me/923182086906" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
   <img src="https://cdn-icons-png.flaticon.com/512/220/220236.png" alt="WhatsApp" width="50" height="50">
 </a>
+  <!-- ===== Quick Solution Bottom App Banner (Android Always Show) ===== -->
+<style>
+#qsAppBanner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+  display: none;
+  z-index: 99999;
+  font-family: Arial, sans-serif;
+}
+
+.qs-banner-content {
+  max-width: 1100px;
+  margin: auto;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.qs-banner-content img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.qs-text {
+  flex: 1;
+}
+
+.qs-text h4 {
+  margin: 0;
+  font-size: 15px;
+  color: #0a3d62;
+}
+
+.qs-text p {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.qs-download-btn {
+  background: #0a3d62;
+  color: #fff;
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.qs-download-btn:hover {
+  background: #0652DD;
+}
+
+.qs-close {
+  font-size: 20px;
+  cursor: pointer;
+  color: #777;
+  padding-left: 6px;
+}
+
+@media (max-width: 600px) {
+  .qs-text h4 { font-size: 14px; }
+  .qs-text p { font-size: 11px; }
+}
+</style>
+
+<div id="qsAppBanner">
+  <div class="qs-banner-content">
+
+    <!-- LOGO -->
+    <img src="logo.png" alt="Quick Solution Android App Karachi">
+
+    <div class="qs-text">
+      <h4>Quick Solution – Home Services in Karachi</h4>
+      <p>
+        Download our Android app for handyman, electrician, plumber,
+        carpenter & home services across Karachi, Pakistan.
+      </p>
+    </div>
+
+    <!-- DIRECT DOWNLOAD LINK -->
+    <a href="https://www.4shared.com/mobile/SPecixyjjq/Quicksol.html"
+       target="_blank"
+       class="qs-download-btn">
+      Download App
+    </a>
+
+    <span class="qs-close" onclick="closeQsBanner()">✖</span>
+  </div>
+</div>
+
+<script>
+/* Show banner every time for Android users */
+window.addEventListener("load", function () {
+  if (/Android/i.test(navigator.userAgent)) {
+    document.getElementById("qsAppBanner").style.display = "block";
+  }
+});
+
+/* Close banner (reappears on refresh) */
+function closeQsBanner() {
+  document.getElementById("qsAppBanner").style.display = "none";
+}
+</script>
+<!-- ===== Quick Solution Bottom App Banner END ===== -->
 </body>
 </html>
